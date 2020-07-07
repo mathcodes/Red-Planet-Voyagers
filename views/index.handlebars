@@ -1,0 +1,64 @@
+<button onclick="topFunction()" id="topBtn" title="Go to top">Back to Top</button>
+
+<!--Everything is good here-->
+<div class="membersParallax">
+  <div class="container">
+    <div class="row rowindex">
+      <div class="col-md-12">
+        <h2 class="welcome">Welcome, {{email}}</h2>
+      </div>
+      <div class="entry">
+        {{#if notification}}
+          <h4 class="radioResponse row rowindexBoolean">You have chosen to receive updates for upcoming SpaceX Rocket launches.</h4>
+        {{else}}
+          <h4 class="radioResponse row rowindexBoolean">You have chosen NOT to receive updates for upcoming SpaceX Rocket launches.</h4>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  
+  <!--Season should append here yet is repeating right now-->
+  <h3><div class="season" id="season"></div>
+  ...Time for a vacation</h3>
+
+  <br>
+
+  <div class="container card-group">
+    <div class="row rowindex">
+      <div class="card col-sm-12 col-md-1">
+      </div>
+
+      <div class="card col-sm-12 col-md-2">
+        <div class="test0"> {{> card}}</div>
+      </div>
+
+      <div class="card col-sm-12 col-md-2">
+        <div class="test1"> {{> card}}</div>
+      </div>
+
+      <div class="card col-sm-12 col-md-2">
+        <div class="test2"> {{> card}}</div>
+      </div>
+
+      <div class="card col-sm-12 col-md-2">
+        <div class="test3"> {{> card}}</div>
+      </div>
+
+      <div class="card col-sm-12 col-md-2">
+        <div class="test4"> {{> card}}</div>
+      </div>
+
+      <div class="card col-sm-12 col-md-1">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<br><br><br>
+
+<div class="container chart">
+      <canvas id="canvas"></canvas>
+      *click on the Min and Max legend boxes above the chart to hide/show the corresponding data.
+</div>
+

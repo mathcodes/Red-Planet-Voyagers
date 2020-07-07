@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>&#127776;Passport Authentication</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+    <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h2>Login Form</h2>
+                <form class="login">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="email-input" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="password-input" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-default">Login</button>
+                </form>
+                <br />
+                <p>Or sign up <a href="/">here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+
+</body>
+
+</html>
+
+
+<!doctype html>
+<html>
+
+<head>
+    <title>Bar Chart Multi Axis</title>
+    <script src="../../../../dist/2.9.3/Chart.min.js"></script>
+    <script src="../../utils.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 75%">
+        <canvas id="canvas"></canvas>
+    </div>
+    <button id="randomizeData">Randomize Data</button>
+    <script>
+        var barChartData = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: 'Dataset 1',
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.orange,
+                    window.chartColors.yellow,
+                    window.chartColors.green,
+                    window.chartColors.blue,
+                    window.chartColors.purple,
+                    window.chartColors.red
+                ],
+                yAxisID: 'y-axis-1',
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ]
+            }, {
+                label: 'Dataset 2',
+                backgroundColor: window.chartColors.grey,
+                yAxisID: 'y-axis-2',
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ]
+            }]
+
+        };
+        window.onload = function() {
+            var ctx = document.getElementById('canvas').getContext('2d');
+            window.myBar = new Chart(ctx, {
+                type: 'bar',
+                data: barChartData,
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Chart.js Bar Chart - Multi Axis'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: true
+                    },
+                    scales: {
+                        yAxes: [{
+                            type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                            display: true,
+                            position: 'left',
+                            id: 'y-axis-1',
+                        }, {
+                            type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                            display: true,
+                            position: 'right',
+                            id: 'y-axis-2',
+                            gridLines: {
+                                drawOnChartArea: false
+                            }
+                        }],
+                    }
+                }
+            });
+        };
+
+        document.getElementById('randomizeData').addEventListener('click', function() {
+            barChartData.datasets.forEach(function(dataset) {
+                dataset.data = dataset.data.map(function() {
+                    return randomScalingFactor();
+                });
+            });
+            window.myBar.update();
+        });
+    </script>
+</body>
+
+</html>
